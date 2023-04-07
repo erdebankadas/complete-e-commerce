@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Chhola{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        
+            {% for chhola in chholas %}
+                <div class="col-sm-8">
+                    <a href="{% url 'product-detail' chhola.id %}" class="btn">
+                        <div class="item">
+                            <img src="{{chhola.product_image.url}}" alt="" height="300" class="">
+                            <div class="fw-bold">{{chhola.title}}</div>
+                            <div class="fw-bold">Rs. {{chhola.discounted_price}}
+                                <small class="fw-light text-decoration-line-through">{{chhola.selling_price}}</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

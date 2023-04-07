@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Product{% endblock title %}
+{% block main-content %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="agileinfo-ads-display col-md-9">
+            <div class="wrapper">
+              <div class="product-sec1">
+                <h3 class="heading-tittle">Search Product</h3>
+                {% for p in product %}
+                <div class="col-md-4 product-men">
+                    <div class="men-pro-item simpleCart_shelfItem">
+                      <div class="men-thumb-item">
+                        <img src="{{p.product_image.url}}" alt="">
+                        <div class="men-cart-pro">
+                          <div class="inner-men-cart-pro">
+                            <a href="{% url 'product-detail' p.id %}" class="link-product-add-cart btn">Quick View</a>
+                          </div>
+                        </div>
+                        <span class="product-new-top">New</span>
+                      </div>
+                      <div class="item-info-product ">
+                        <h4>
+                          {{p.title}}
+                        </h4>
+                        <div class="info-product-price">
+                          <span class="item_price">{{p.discounted_price}}</span>
+                          <del>{{p.selling_price}}</del>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <div class="clearfix"></div>
+                </div>
+
+{% endblock main-content %}

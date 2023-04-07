@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cooking Oil and Ghee{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        
+        <div class="col-sm-8">
+            <div class="row">
+                {% for oil in oils %}
+                <div class="col-sm-4 text-center mb-4">
+                    <a href="{% url 'product-detail' oil.id %}" class="btn">
+                        <div class="item">
+                            <img src="{{oil.product_image.url}}" alt="" height="300" class="">
+                            <div class="fw-bold">{{oil.title}}</div>
+                            <div class="fw-bold">Rs. {{oil.discounted_price}}
+                                <small class="fw-light text-decoration-line-through">{{oil.selling_price}}</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
